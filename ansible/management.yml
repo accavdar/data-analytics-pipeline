@@ -1,0 +1,7 @@
+---
+- name: Configuring `management` server
+  hosts: management
+  become: True
+
+  roles:
+    - management

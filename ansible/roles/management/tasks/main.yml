@@ -1,0 +1,9 @@
+---
+- name: Update known hosts file for all nodes
+  known_hosts:
+    name = {{ item }}
+  with_items:
+    - master
+    - worker1
+    - worker2
+    - worker3
