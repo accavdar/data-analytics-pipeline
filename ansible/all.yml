@@ -1,0 +1,8 @@
+---
+- name: Common config for `all` nodes
+  hosts: all
+  become: True
+
+  roles:
+    - host
+    - java

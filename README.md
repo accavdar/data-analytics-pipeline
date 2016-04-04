@@ -5,7 +5,8 @@ This repository contains necessary setup for creating a data analytics pipeline.
 
 # Requirements
 
-- Install [Vagrant](https://www.vagrantup.com/docs/installation/)
+- Download and install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+- Download and install [Vagrant](https://www.vagrantup.com/docs/installation/)
 
 ## Installation
 
