@@ -1,3 +1,11 @@
 ---
-- name: Common config for `master` node
-  include: common.yml
+- include: common.yml
+
+- name: Config for `master` node
+  hosts: masters
+  become: True
+
+  roles:
+    - { role: 'hadoop/roles/common' }
+    - { role: 'hadoop/roles/master' }
+    - hue

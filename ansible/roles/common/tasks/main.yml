@@ -10,3 +10,6 @@
   when: hostvars[item]['ansible_host'] is defined
   with_items:
     - "{{ groups.all }}"
+
+- name: Install add-apt-repository
+  apt: name=software-properties-common state=latest
