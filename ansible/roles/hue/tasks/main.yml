@@ -1,0 +1,23 @@
+- name: Install the hue server packages
+  apt: name={{item}} state=latest
+  with_items:
+    - hue
+    - hue-server
+    - hue-plugins
+
+#- name: Create hue database
+#  shell: mysql -u root -e "create database {{ mysql.db_name }}; grant all on {{ mysql.db_name }}.* to '{{ mysql.username }}'@'localhost' identified by '{{ mysql.password }}'"
+
+- name: Remove config directory
+  file: path=/etc/hue/{{ item }} state=absent
+  with_items:
+    - conf.empty
+    - conf
+
+- name: Create hue config directory
+  file: path=/etc/hue/conf state=directory
+
+- name: Copy hue.ini config file
+  template: src=hue.ini.j2 dest=/etc/hue/conf/hue.ini
+
+
