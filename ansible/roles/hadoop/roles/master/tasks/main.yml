@@ -2,9 +2,8 @@
 - name: Install the namenode and jobtracker packages
   apt: name={{item}} state=latest
   with_items:
-   - hadoop-hdfs-namenode
-   - hadoop-0.20-mapreduce-jobtracker
-   - hadoop-doc
+    - hadoop-yarn-resourcemanager
+    - hadoop-hdfs-namenode
 
 - name: Create the data directory for the namenode metadata
   file: path={{ item }} owner=hdfs group=hdfs state=directory
@@ -20,7 +19,6 @@
    - hdfs-site.xml
    - log4j.properties
    - mapred-site.xml
-   - hadoop-env.sh
    - slaves
   notify: restart hadoop master services
 

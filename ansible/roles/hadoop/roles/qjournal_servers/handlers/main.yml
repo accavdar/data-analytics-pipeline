@@ -1,0 +1,3 @@
+---
+- name: restart qjournal services
+  service: name=hadoop-hdfs-journalnode state=restarted

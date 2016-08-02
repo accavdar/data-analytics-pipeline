@@ -1,12 +1,15 @@
 ---
 - name: Add the Cloudera Hadoop Repository
-  apt_repository: repo="deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/ trusty-cdh5 contrib" state=present
+  apt_repository: repo="deb [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh trusty-cdh5 contrib" state=present
+
+- name: Add the Cloudera Hadoop Src Repository
+  apt_repository: repo="deb-src [arch=amd64] http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh trusty-cdh5 contrib" state=present
 
 - name: Add the Cloudera APT repository key
   apt_key: url=https://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/archive.key state=present
 
-- name: Add the Cloudera Manager Repository
-  apt_repository: repo="deb [arch=amd64] http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm trusty-cm5 contrib" state=present
+#- name: Add the Cloudera Manager Repository
+#  apt_repository: repo="deb [arch=amd64] http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm trusty-cm5 contrib" state=present
 
 - name: Update apt cache
   apt: update_cache=yes cache_valid_time=172800
@@ -17,7 +20,7 @@
 - name: Remove line like 127.0.1.1 from /etc/hosts
   lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1' state=absent
 
-- name: Copy the configuration files for using Cloudera repo for ZooKeeper package
-  copy: src={{item}} dest=/etc/apt/preferences.d/{{item}} mode=644
-  with_items:
-    - cloudera.pref
+#- name: Copy the configuration files for using Cloudera repo for ZooKeeper package
+#  copy: src={{item}} dest=/etc/apt/preferences.d/{{item}} mode=644
+#  with_items:
+#    - cloudera.pref

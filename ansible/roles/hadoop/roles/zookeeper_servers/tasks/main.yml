@@ -1,0 +1,10 @@
+---
+- name: Install the zookeeper files
+  apt: name=zookeeper-server state=installed
+
+- name: Copy the configuration file for zookeeper
+  template: src=zoo.cfg.j2 dest=/etc/zookeeper/conf/zoo.cfg
+  notify: restart zookeeper
+
+- name: initialize the zookeper
+  shell: service zookeeper-server init --myid={{ zoo_id }} creates=/var/lib/zookeeper/myid

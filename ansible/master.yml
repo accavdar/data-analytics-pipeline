@@ -7,5 +7,7 @@
 
   roles:
     - { role: 'hadoop/roles/common' }
-    - { role: 'hadoop/roles/master' }
-    - hue
+    - { role: 'hadoop/roles/zookeeper_servers' }
+    - { role: 'hadoop/roles/qjournal_servers' }
+    #- { role: 'hadoop/roles/master' }
+    #- hue
